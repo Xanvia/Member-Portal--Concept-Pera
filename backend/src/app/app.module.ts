@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ envFilePath: ['.env'] }),
+    ConfigModule.forRoot({ envFilePath: ['.env'], isGlobal: true }),
     MongooseModule.forRoot(process.env.DB_URL),
     UserModule,
     AuthModule,
