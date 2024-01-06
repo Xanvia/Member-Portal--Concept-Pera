@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "tw-elements-react/dist/css/tw-elements-react.min.css";
 
 export const metadata: Metadata = {
   title: "Concept-Pera-Member-Portal",
