@@ -1,8 +1,6 @@
-// user.schema.ts
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { Project } from 'src/project/project.schema';
+import { Project, ProjectSchema } from 'src/project/project.schema';
 
 @Schema()
 export class User extends Document {
@@ -24,8 +22,8 @@ export class User extends Document {
   @Prop()
   isApproved: boolean;
 
-  @Prop({ type: [{ type: String }] })
-  projects: string[];
+  @Prop({ type: [{ type: ProjectSchema }] })
+  projects: Project[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
