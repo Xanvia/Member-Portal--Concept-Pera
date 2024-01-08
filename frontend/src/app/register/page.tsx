@@ -4,7 +4,7 @@ import { TEInput, TERipple } from "tw-elements-react";
 
 export default function Register() {
   return (
-    <section className="h-full bg-neutral-200 dark:bg-neutral-700">
+    <section className="h-full bg-neutral-100 dark:bg-neutral-700">
       <div className="container h-full p-10">
         <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
           <div className="w-full">
@@ -21,7 +21,7 @@ export default function Register() {
                         alt="logo"
                       />
                       <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                        We are The Lotus Team
+                        Concept Pera
                       </h4>
                     </div>
 
