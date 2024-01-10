@@ -1,9 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Project, ProjectSchema } from 'src/project/project.schema';
-import { IsEmail, IsEnum, IsBoolean, ArrayMinSize } from 'class-validator';
+enum UserRole {
+  ADMIN = 'admin',
+  MEMBER = 'member',
+}
 
-enum UserRole {}
 @Schema()
 export class User extends Document {
   @Prop({ required: true })
@@ -13,14 +15,13 @@ export class User extends Document {
   lastName: string;
 
   @Prop({ required: true, unique: true })
-  @IsEmail()
   email: string;
 
   @Prop({ required: true })
   password: string;
 
   @Prop({ type: String, enum: UserRole })
-  status: string;
+  status: UserRole;
 
   @Prop()
   isApproved: boolean;
