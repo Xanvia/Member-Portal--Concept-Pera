@@ -6,7 +6,12 @@ import { User, UserSchema } from 'src/users/user.schema';
 import * as mongoose from 'mongoose';
 
 
-enum ProjectStatus {}
+enum ProjectStatus {
+  ONGOING = 'ongoing',
+  COMPLETED = 'completed',
+  // Add more status values as needed
+}
+
 // Add your project status values here
 
 @Schema()
@@ -18,7 +23,7 @@ export class Project extends Document {
   description: string;
 
   @Prop({ type: String, enum: ProjectStatus })
-  status: string;
+  status: ProjectStatus;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
   coordinators: User[];
