@@ -37,8 +37,6 @@ export class UserService {
     enteredPassword: string,
     storedPassword: string,
   ): Promise<boolean> {
-    
-    const bcrypt = require('bcryptjs');
     const isPasswordValid = await bcrypt.compare(
       enteredPassword,
       storedPassword,

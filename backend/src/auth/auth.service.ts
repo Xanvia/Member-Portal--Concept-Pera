@@ -42,14 +42,12 @@ export class AuthService {
   async login(
     email: string,
     password: string,
-  ): Promise<{ token: string; user: User }> {
+  ): Promise<{ token: string}> {
     try {
       const user = await this.userService.findUserByEmail(email);
-
       if (!user) {
         throw new NotFoundException('User not found.');
       }
-
       const isPasswordValid = await this.userService.verifyPassword(
         password,
         user.password,
@@ -61,7 +59,7 @@ export class AuthService {
 
       const token = await this.jwtService.signAsync({ userId: user.id });
 
-      return { token, user };
+      return { token };
     } catch (error) {
       throw new InternalServerErrorException('Internal server error');
     }
