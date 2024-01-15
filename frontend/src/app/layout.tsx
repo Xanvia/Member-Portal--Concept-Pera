@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { Inter } from "next/font/google";
+import StoreProvider from "@src/providers/StoreProvider";
 
 export const metadata: Metadata = {
   title: "Concept-Pera-Member-Portal",
@@ -20,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>{children}</body>
+      <StoreProvider>
+        <body>{children}</body>
+      </StoreProvider>
     </html>
   );
 }
