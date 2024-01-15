@@ -2,6 +2,8 @@ import {
   Injectable,
   BadRequestException,
   InternalServerErrorException,
+  NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { UserService } from 'src/users/user.service';
 import { User } from 'src/users/user.schema';
@@ -19,7 +21,7 @@ export class AuthService {
     try {
       const createdUser = await this.userService.createUser(user);
       const token = await this.jwtService.signAsync({
-        userId: createdUser.firstName,
+        userId: createdUser.id,
       });
       return { token, user: createdUser };
     } catch (error) {
@@ -34,6 +36,34 @@ export class AuthService {
       } else {
         throw new InternalServerErrorException('Internal server error');
       }
+    }
+  }
+
+  async login(
+    email: string,
+    password: string,
+  ): Promise<{ token: string; user: User }> {
+    try {
+      const user = await this.userService.findUserByEmail(email);
+
+      if (!user) {
+        throw new NotFoundException('User not found.');
+      }
+
+      const isPasswordValid = await this.userService.verifyPassword(
+        password,
+        user.password,
+      );
+
+      if (!isPasswordValid) {
+        throw new UnauthorizedException('Invalid password.');
+      }
+
+      const token = await this.jwtService.signAsync({ userId: user.id });
+
+      return { token, user };
+    } catch (error) {
+      throw new InternalServerErrorException('Internal server error');
     }
   }
 }

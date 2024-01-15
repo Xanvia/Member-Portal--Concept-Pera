@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 import { User } from './user.schema';
 import { CreateUserDto } from './user.dto';
+import { NotFoundException } from '@nestjs/common';
 @Injectable()
 export class UserService {
   constructor(
@@ -21,5 +22,27 @@ export class UserService {
   }
   async getAllUsers(): Promise<User[]> {
     return this.userModel.find().exec();
+  }
+
+  async findUserByEmail(email: string): Promise<User | null> {
+    try {
+      const user = await this.userModel.findOne({ email }).exec();
+      return user;
+    } catch (error) {
+      throw new NotFoundException('User not found.');
+    }
+  }
+
+  async verifyPassword(
+    enteredPassword: string,
+    storedPassword: string,
+  ): Promise<boolean> {
+    
+    const bcrypt = require('bcryptjs');
+    const isPasswordValid = await bcrypt.compare(
+      enteredPassword,
+      storedPassword,
+    );
+    return isPasswordValid;
   }
 }
