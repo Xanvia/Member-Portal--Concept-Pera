@@ -28,45 +28,42 @@ const LeftSide = () => {
               Concept Pera
             </h4>
           </div>
+          <p className="mb-4">Please register an account</p>
+          {/* <!--Email input--> */}
+          <TEInput
+            id=""
+            type="email"
+            label="Email"
+            className="mb-4 text-white text-sm"
+          ></TEInput>
 
-          <form>
-            <p className="mb-4">Please register an account</p>
-            {/* <!--Email input--> */}
-            <TEInput
-              id=""
-              type="email"
-              label="Email"
-              className="mb-4 text-white text-sm"
-            ></TEInput>
+          {/* <!--Password input--> */}
+          <TEInput
+            type="password"
+            label="Password"
+            className="mb-4 text-white text-sm"
+          ></TEInput>
 
-            {/* <!--Password input--> */}
-            <TEInput
-              type="password"
-              label="Password"
-              className="mb-4 text-white text-sm"
-            ></TEInput>
-
-            {/* <!--Submit button--> */}
-            <div className="mb-12 pb-1 pt-1 text-center flex justify-center">
-              <TERipple rippleColor="light">
-                <button
-                  type="button"
-                  className="inline-block rounded border-2 border-warning px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-warning transition duration-150 ease-in-out hover:border-warning-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-warning-600 focus:border-warning-600 focus:text-warning-600 focus:outline-none focus:ring-0 active:border-warning-700 active:text-warning-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
-                >
-                  Continue
-                </button>
-              </TERipple>
-            </div>
-
-            {/* <!--Register button--> */}
-            <div className="flex items-center justify-end pb-6">
-              <p className="mb-0 mr-2">Already have an account?</p>
-
-              <button type="button" className="underline">
-                Login
+          {/* <!--Submit button--> */}
+          <div className="mb-12 pb-1 pt-1 text-center flex justify-center">
+            <TERipple rippleColor="light">
+              <button
+                type="button"
+                className="inline-block rounded border-2 border-warning px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-warning transition duration-150 ease-in-out hover:border-warning-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-warning-600 focus:border-warning-600 focus:text-warning-600 focus:outline-none focus:ring-0 active:border-warning-700 active:text-warning-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+              >
+                Continue
               </button>
-            </div>
-          </form>
+            </TERipple>
+          </div>
+
+          {/* <!--Register button--> */}
+          <div className="flex items-center justify-end pb-6">
+            <p className="mb-0 mr-2">Already have an account?</p>
+
+            <button type="button" className="underline">
+              Login
+            </button>
+          </div>
         </div>
       </div>
 
